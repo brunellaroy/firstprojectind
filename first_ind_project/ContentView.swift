@@ -1,19 +1,12 @@
-//
-//  ContentView.swift
-//  first_ind_project
-//
-//  Created by Brunella Roy Chowdhury on 11/11/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         TabView {
             
-            Text("Home")
+           HomeView()
                 .tabItem {
-                    Image(systemName: "house.fill")
+                    Image(systemName: "house")
                     Text("Home")
                 }
 
@@ -41,8 +34,10 @@ struct ContentView: View {
                     Text("Area riservata")
                 }
         }
+        .tint(Color.blue)
     }
-    }
+}
+
 #Preview {
     ContentView()
 }

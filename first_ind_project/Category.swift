@@ -11,36 +11,54 @@ struct Category: Identifiable {
     let id = UUID()
     let name: String
     let icon: String
+    let color: Color
 }
 
-// Your sample categories
 let sampleCategories: [Category] = [
-    Category(name: "Motori", icon: "car.fill"),
-    Category(name: "Market", icon: "scooter"),
-    Category(name: "Immobili", icon: "house.fill"),
-    Category(name: "Lavoro", icon: "briefcase.fill"),
-    
+    Category(name: "Motori",   icon: "car.fill",         color: .red),
+    Category(name: "Moda",   icon: "tshirt.fill",  color: .purple),
+    Category(name: "Immobili", icon: "building.2",       color: .green),
+    Category(name: "Lavoro",   icon: "briefcase.fill",   color: .blue),
+    Category(name: "Market",   icon: "storefront.fill",  color: .orange)
 ]
+
 
 struct CategoryItem: View {
     let category: Category
-
+    
     var body: some View {
-        VStack(spacing: 8) {
+        VStack {
             ZStack {
                 Circle()
-                    .fill(Color(.systemGray6))
-                    .frame(width: 70, height: 70)
+                    .fill(Color(.systemGray5))
+                    .frame(width: 60, height: 60)
 
                 Image(systemName: category.icon)
-                    .font(.system(size: 28))
-                    .foregroundColor(.black)
+                    .font(.system(size: 26))
+                    .foregroundColor(category.color)
             }
 
             Text(category.name)
                 .font(.caption)
                 .foregroundColor(.primary)
         }
-        .frame(width: 80)
+    }
+}
+
+
+struct CategoryDetailView: View {
+    let category: Category
+    
+    var body: some View {
+        VStack {
+            Text("Selected Category")
+                .font(.title2)
+                .padding(.bottom, 8)
+            
+            Text(category.name)
+                .font(.largeTitle)
+                .bold()
+        }
+        .padding()
     }
 }
